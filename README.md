@@ -3,9 +3,11 @@ threejs-character-controls-example
 
 `npm install` and `npm run start`
 
-![Screenshot](https://github.com/tamani-coding/threejs-character-controls-example/blob/main/screenshot01.png?raw=true)
+![Screenshot](screenshot01.png?raw=true "Screenshot")
+# Credits
+This is a fork of https://github.com/tamani-coding/threejs-character-controls-example
 
-
-# Based on work of
-https://github.com/tamani-coding/threejs-character-controls-example
-https://www.youtube.com/watch?v=C3s0UHpwlf8&t=8s
+Changes:
+- Fixed the floor as it caused very low FPS
+- Removed typescript
+- Refactored to use 'vite' as build tool
