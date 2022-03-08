@@ -7,14 +7,14 @@ export const DIRECTIONS = [W, A, S, D]
 
 export class KeyDisplay {
 
-    map: Map<string, HTMLDivElement> = new Map()
+    map = new Map()
 
     constructor() {
-        const w: HTMLDivElement = document.createElement("div")
-        const a: HTMLDivElement = document.createElement("div")
-        const s: HTMLDivElement = document.createElement("div")
-        const d: HTMLDivElement = document.createElement("div")
-        const shift: HTMLDivElement = document.createElement("div")
+        const w = document.createElement("div")
+        const a = document.createElement("div")
+        const s = document.createElement("div")
+        const d = document.createElement("div")
+        const shift = document.createElement("div")
 
         this.map.set(W, w)
         this.map.set(A, a)
@@ -37,7 +37,7 @@ export class KeyDisplay {
         })
     }
 
-    public updatePosition() {
+    updatePosition() {
         this.map.get(W).style.top = `${window.innerHeight - 150}px`
         this.map.get(A).style.top = `${window.innerHeight - 100}px`
         this.map.get(S).style.top = `${window.innerHeight - 100}px`
@@ -51,13 +51,13 @@ export class KeyDisplay {
         this.map.get(SHIFT).style.left = `${50}px`
     }
 
-    public down (key: string) {
+    down (key) {
         if (this.map.get(key.toLowerCase())) {
             this.map.get(key.toLowerCase()).style.color = 'red'
         }
     }
 
-    public up (key: string) {
+    up (key) {
         if (this.map.get(key.toLowerCase())) {
             this.map.get(key.toLowerCase()).style.color = 'blue'
         }

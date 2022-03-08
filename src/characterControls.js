@@ -1,35 +1,35 @@
 import * as THREE from 'three'
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
 import { A, D, DIRECTIONS, S, W } from './utils'
 
 
 export class CharacterControls {
 
-    model: THREE.Group
-    mixer: THREE.AnimationMixer
-    animationsMap: Map<string, THREE.AnimationAction> = new Map() // Walk, Run, Idle
-    orbitControl: OrbitControls
-    camera: THREE.Camera
+    model
+    mixer
+    animationsMap = new Map() // Walk, Run, Idle
+    orbitControl
+    camera
 
     // state
-    toggleRun: boolean = true
-    currentAction: string
+    toggleRun = true
+    currentAction
     
     // temporary data
     walkDirection = new THREE.Vector3()
     rotateAngle = new THREE.Vector3(0, 1, 0)
-    rotateQuarternion: THREE.Quaternion = new THREE.Quaternion()
+    rotateQuarternion = new THREE.Quaternion()
     cameraTarget = new THREE.Vector3()
     
     // constants
-    fadeDuration: number = 0.2
+    fadeDuration = 0.2
     runVelocity = 5
     walkVelocity = 2
 
-    constructor(model: THREE.Group,
-        mixer: THREE.AnimationMixer, animationsMap: Map<string, THREE.AnimationAction>,
-        orbitControl: OrbitControls, camera: THREE.Camera,
-        currentAction: string) {
+    constructor(model,
+        mixer, 
+        animationsMap,
+        orbitControl, camera,
+        currentAction) {
         this.model = model
         this.mixer = mixer
         this.animationsMap = animationsMap
@@ -44,11 +44,11 @@ export class CharacterControls {
         this.updateCameraTarget(0,0)
     }
 
-    public switchRunToggle() {
+    switchRunToggle() {
         this.toggleRun = !this.toggleRun
     }
 
-    public update(delta: number, keysPressed: any) {
+    update(delta, keysPressed) {
         const directionPressed = DIRECTIONS.some(key => keysPressed[key] == true)
 
         var play = '';
@@ -102,7 +102,7 @@ export class CharacterControls {
         }
     }
 
-    private updateCameraTarget(moveX: number, moveZ: number) {
+    updateCameraTarget(moveX, moveZ) {
         // move camera
         this.camera.position.x += moveX
         this.camera.position.z += moveZ
@@ -114,7 +114,7 @@ export class CharacterControls {
         this.orbitControl.target = this.cameraTarget
     }
 
-    private directionOffset(keysPressed: any) {
+    directionOffset(keysPressed) {
         var directionOffset = 0 // w
 
         if (keysPressed[W]) {
